@@ -3,14 +3,19 @@ angular.module("sshop").config(function ($routeProvider) {
     .when("/product-list", {
         templateUrl: "app/partials/productList.html",
         controller: "productListCtrl",
-        // resolve: {
-        //     products: function (sshopAPI) {
-        //         return sshopAPI.getProducts();
-        //     }
-        // }
+        resolve: {
+            products: function (sshopAPI) {
+                return sshopAPI.getProducts();
+            }
+        }
     })
     .otherwise({
         templateUrl: "app/partials/productList.html",
-        controller: "productListCtrl"
+        controller: "productListCtrl",
+        resolve: {
+            products: function (sshopAPI) {
+                return sshopAPI.getProducts();
+            }
+        }
     })
 });
