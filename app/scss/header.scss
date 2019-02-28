@@ -1,5 +1,12 @@
 $button-toggle-sidenav-font-size: 24px;
 
+.div-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
 .button-toggle-sidenav {
     font-size: $button-toggle-sidenav-font-size;
 }

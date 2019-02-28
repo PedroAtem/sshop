@@ -1,3 +1,11 @@
-md-sidenav, md-backdrop {
-    margin-top: 64px;
+$header-height: 64px;
+
+.div-sidenav {
+    margin-top: $header-height;
+}
+
+md-sidenav, .md-sidenav-backdrop {
+    position: fixed;
+    top: $header-height !important;
+    bottom: 0;
 }
