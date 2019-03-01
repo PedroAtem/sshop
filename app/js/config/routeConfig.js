@@ -18,7 +18,7 @@ angular.module("sshop").config(function ($routeProvider) {
             }
         }
     })
-    .when("admin/products", {
+    .when("/admin/products", {
         templateUrl: "app/partials/admin/adminProducts.html",
         controller: "adminProductsCtrl",
         resolve: {
@@ -27,7 +27,7 @@ angular.module("sshop").config(function ($routeProvider) {
             }
         }
     })
-    .when("admin/orders", {
+    .when("/admin/orders", {
         templateUrl: "app/partials/admin/adminOrders.html",
         controller: "adminOrdersCtrl",
         resolve: {

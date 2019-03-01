@@ -16,6 +16,7 @@ require("./controllers/headerCtrl.js");
 require("./controllers/sidenavCtrl.js");
 require("./controllers/homeCtrl.js");
 require("./controllers/cartCtrl.js");
+require("./controllers/admin/adminOrdersCtrl.js");
 
 require("./services/sshopAPIService.js");
 require("./services/cartService.js");
