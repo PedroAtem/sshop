@@ -1,10 +1,10 @@
-import "../scss/style.scss";
-import "../scss/header.scss";
-import "../scss/sidenav.scss";
-import "../scss/home.scss";
-import "../scss/table.scss";
-import "../scss/cart.scss";
-import "../scss/product.scss";
+require("../scss/style.scss");
+require("../scss/header.scss");
+require("../scss/sidenav.scss");
+require("../scss/home.scss");
+require("../scss/table.scss");
+require("../scss/cart.scss");
+require("../scss/product.scss");
 
 angular.module("sshop", ["ngMaterial", "ngMessages", "ngRoute"]);
 angular.module("sshop").controller("sshopCtrl", function ($scope) {
