@@ -13,15 +13,17 @@ angular.module("sshop").factory("paginator", function() {
                 this.update();
             },
             updatePages: function() {
-                let items_filtered = this.items.filter(item => item.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
-                var count = items_filtered.length / this.items_per_page;
-                var count_precision = Number(count.toString().split('.')[0]);
                 this.pages = [];
-                if (count > count_precision) {
-                    count++;
-                }
-                for (i = 1; i <= count; i++) {
-                    this.pages.push(i);
+                if (this.items.length) {
+                    let items_filtered = this.items.filter(item => item.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
+                    var count = items_filtered.length / this.items_per_page;
+                    var count_precision = Number(count.toString().split('.')[0]);
+                    if (count > count_precision) {
+                        count++;
+                    }
+                    for (i = 1; i <= count; i++) {
+                        this.pages.push(i);
+                    }
                 }
             },
             updateItems: function(items) {

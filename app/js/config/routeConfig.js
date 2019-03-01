@@ -18,6 +18,27 @@ angular.module("sshop").config(function ($routeProvider) {
             }
         }
     })
+    .when("admin/products", {
+        templateUrl: "app/partials/admin/adminProducts.html",
+        controller: "adminProductsCtrl",
+        resolve: {
+            products: function (sshopAPI) {
+                return sshopAPI.getProducts();
+            }
+        }
+    })
+    .when("admin/orders", {
+        templateUrl: "app/partials/admin/adminOrders.html",
+        controller: "adminOrdersCtrl",
+        resolve: {
+            products: function (sshopAPI) {
+                return sshopAPI.getProducts();
+            },
+            orders: function (sshopAPI) {
+                return sshopAPI.getOrders();
+            }
+        }
+    })
     .otherwise({
         templateUrl: "app/partials/home.html",
         controller: "homeCtrl",

@@ -5,11 +5,13 @@ angular.module("sshop").service("cart", function($http, config) {
         if (localStorage.cart) {
             cart = JSON.parse(localStorage.cart);
         } else {
-            cart = {
-                items: []
-            }
+            cart = {}
         }
         return cart;
+    }
+
+    this.clearItems = function() {
+        delete localStorage.cart;
     }
     
     this.addProductToCart = function(product) {

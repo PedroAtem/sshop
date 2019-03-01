@@ -1,5 +1,8 @@
-angular.module("sshop").controller("cartCtrl", function($scope, products, paginator, cart, $mdToast, $location) {;
+angular.module("sshop").controller("cartCtrl", function($scope, sshopAPI, products, paginator, cart, $mdToast, $location) {;
 
+    $scope.user = {
+        name: ""
+    }
     $scope.products = products.data.sort((a, b) => a.id - b.id).map(product => {product.quantity = 1; return product});
     $scope.paginator = paginator.create([], 8);
     $scope.getCart = function() {
@@ -30,14 +33,43 @@ angular.module("sshop").controller("cartCtrl", function($scope, products, pagina
     }
 
     $scope.finalizePurchase = function() {
-        $mdToast.show(
-            $mdToast.simple()
-            .textContent("Compra finalizada com sucesso!")
-            .position('bottom right')
-            .hideDelay(3000)
-        ).then(function() {
-            $location.path( "/home" );
-        }).catch(function() {});
+        if ($scope.products_in_cart.length === 0) {
+            return $mdToast.show($mdToast.simple().textContent("Não há items no seu carrinho de compras").position('bottom right').hideDelay(2000))
+        }
+        if ($scope.user.name === "") {
+            $mdToast.show($mdToast.simple().textContent("Por favor, informe um nome").position('bottom right').hideDelay(2000))
+        }
+
+        $mdToast.show($mdToast.simple().textContent("Processando pedido...").position('bottom right').hideDelay(2000))
+        sshopAPI.postUser($scope.user)
+        .then(
+            function succes(response) {
+                var user = response.data;
+                var products = $scope.products_in_cart.map(product => {
+                    return {
+                        product_id: product.id,
+                        amount: product.quantity
+                    }
+                });
+                sshopAPI.postOrder({
+                    user_id: user.id,
+                    items: products
+                }).then(
+                    function success(response) {
+                        $mdToast.show($mdToast.simple().textContent("Compra finalizada com sucesso").position('bottom right').hideDelay(2000)).then(function() {
+                            cart.clearItems();
+                            $location.path( "/home" );
+                        }).catch(function() {});
+                    },
+                    function error(response) {
+                        $mdToast.show($mdToast.simple().textContent("Erro ao finalizar compra").position('bottom right').hideDelay(2000))
+                    }
+                );
+            },
+            function error(response) {
+                $mdToast.show($mdToast.simple().textContent("Erro ao inserir usuário").position('bottom right').hideDelay(2000))
+            }
+        )
     }
     
     $scope.getCart();
