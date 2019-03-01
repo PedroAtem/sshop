@@ -37,7 +37,7 @@ angular.module("sshop").controller("cartCtrl", function($scope, sshopAPI, produc
             return $mdToast.show($mdToast.simple().textContent("Não há items no seu carrinho de compras").position('bottom right').hideDelay(2000))
         }
         if ($scope.user.name === "") {
-            $mdToast.show($mdToast.simple().textContent("Por favor, informe um nome").position('bottom right').hideDelay(2000))
+            return $mdToast.show($mdToast.simple().textContent("Por favor, informe um nome").position('bottom right').hideDelay(2000))
         }
 
         $mdToast.show($mdToast.simple().textContent("Processando pedido...").position('bottom right').hideDelay(2000))
