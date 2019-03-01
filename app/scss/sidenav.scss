@@ -1,11 +1,51 @@
 $header-height: 64px;
+$mobile-breaker: 960px;
+$header-mobile-height: 48px;
+$sidenav-width: 200px;
+$sidenav-content-padding: 5px;
+$sidenav-content-padding-left: $sidenav-width + $sidenav-content-padding;
 
 .div-sidenav {
     margin-top: $header-height;
+    @media screen and (max-width: $mobile-breaker) {
+        margin-top: $header-mobile-height;
+    }
+}
+
+md-sidenav {
+    width: $sidenav-width;
+    height: calc(100vh - $header-height);
+    @media screen and (max-width: $mobile-breaker) {
+        width: 100vw;
+        max-width: 100vw;
+        height: calc(100vh - $header-mobile-height);
+    }
+}
+
+.md-route-content {
+    padding: $sidenav-content-padding;
+}
+
+.md-route-content-sidenav-open {
+    padding-left: $sidenav-content-padding-left;
+    transition: padding-left 0.3s ease-in-out;
+}
+
+.md-route-content-sidenav-close {
+    padding-left: $sidenav-content-padding;
+    transition: padding-left 0.3s ease-in-out;
 }
 
 md-sidenav, .md-sidenav-backdrop {
     position: fixed;
     top: $header-height !important;
     bottom: 0;
+    @media screen and (max-width: $mobile-breaker) {
+        top: $header-mobile-height !important;
+    }    
+}
+
+.sidenav-link {
+    width: 100%;
+    margin: 0px;
 }
