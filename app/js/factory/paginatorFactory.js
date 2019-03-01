@@ -24,6 +24,10 @@ angular.module("sshop").factory("paginator", function() {
                     this.pages.push(i);
                 }
             },
+            updateItems: function(items) {
+                this.items = items;
+                this.update();
+            },
             update: function() {
                 this.updatePages();
                 this.filtered_items = this.items.filter(item => item.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
