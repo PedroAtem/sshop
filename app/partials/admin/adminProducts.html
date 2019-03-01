@@ -1,0 +1,97 @@
+<md-card class="card-content">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Admin > produtos</span>
+            <div class="header-space"></div>
+            <md-input-container class="div-search-input" ng-show="table_ready">
+                <label>Pesquisar</label>
+                <input ng-model="paginator.search" ng-keyup="paginator.update()">
+            </md-input-container>
+        </md-card-title-text>
+    </md-card-title>
+    <div class="div-add-product">
+        <div class="flex-table-container" ng-show="table_ready">
+            <div class="flex-table">
+                <div class="flex-row">
+                    <div class="flex-column flex-column-100 flex-column-header">Adicionar novo produto</div>
+                </div>
+                <div class="flex-row">
+                    <div class="flex-column flex-column-20">
+                        <md-input-container class="add-product-input">
+                            <label>Produto</label>
+                            <input ng-model="product.name">
+                        </md-input-container>
+                    </div>
+                    <div class="flex-column flex-column-50">
+                        <md-input-container class="add-product-input">
+                            <label>Descrição</label>
+                            <input ng-model="product.description">
+                        </md-input-container>
+                    </div>
+                    <div class="flex-column flex-column-10">
+                        <md-input-container class="add-product-input">
+                            <label>Preço R$</label>
+                            <input ng-model="product.price" type="number">
+                        </md-input-container>
+                    </div>
+                    <div class="flex-column flex-column-20">
+                        <md-button ng-show="method == 'POST'" ng-click="addProduct()" class="md-fab md-primary" aria-label="button-add">
+                            <i class="fas fa-plus"></i>
+                        </md-button>
+                        <md-button ng-show="method == 'PUT'" ng-click="putProduct()" class="md-fab md-primary" aria-label="button-add">
+                            <i class="fas fa-check"></i>
+                        </md-button>
+                        <md-button ng-show="method == 'PUT'" ng-click="cancelEdit()" class="md-fab md-primary" aria-label="button-add">
+                            <i class="fas fa-times"></i>
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="adding_product">
+            <md-progress-linear md-mode="query" ng-disabled="!adding_product"></md-progress-linear>
+        </div>
+    </div>
+    <div class="flex-table-container" ng-show="table_ready">
+        <div class="flex-table">
+            <div class="flex-row flex-row-header">
+                <div class="flex-column flex-column-20 flex-column-header">Produto</div>
+                <div class="flex-column flex-column-50 flex-column-header">Descrição</div>
+                <div class="flex-column flex-column-10 flex-column-header">Preço</div>
+                <div class="flex-column flex-column-20 flex-column-header">Ações</div>
+            </div>
+            <div class="flex-row flex-row-striped" ng-repeat="product in paginator.filtered_items">
+                <div class="flex-column flex-column-20">{{ product.name }}</div>
+                <div class="flex-column flex-column-50">{{ product.description }}</div>
+                <div class="flex-column flex-column-10">{{ product.price | currency:"R$ " }}</div>
+                <div class="flex-column flex-column-20">
+                    <md-button ng-click="editProduct(product.id)" class="md-fab md-primary" aria-label="button-add">
+                        <i class="fas fa-pen"></i>
+                    </md-button>
+                    <md-button ng-click="removeProduct(product.id)" class="md-fab md-primary" aria-label="button-add">
+                        <i class="fas fa-trash"></i>
+                    </md-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-row-paginator" ng-show="table_ready">
+        <md-button class="md-icon-button md-primary" aria-label="paginator-previous" ng-click="paginator.previous()">
+            <i class="fas fa-arrow-left"></i>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="paginator-previous" ng-repeat="page in paginator.pages" ng-click="paginator.goToPage(page)"
+            ng-class="{'md-primary': paginator.page === page, 'md-accent': paginator.page !== page}">
+            {{ page }}
+        </md-button>
+        <md-button class="md-icon-button md-primary" aria-label="paginator-next" ng-click="paginator.next()">
+            <i class="fas fa-arrow-right"></i>
+        </md-button>
+    </div>
+    <div ng-show="!table_ready">
+        <md-progress-linear md-mode="query" ng-disabled="table_ready"></md-progress-linear>
+        <div class="loading-text">
+            <span>Buscando produtos</span>
+        </div>
+    </div>
+</md-card>
+    

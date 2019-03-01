@@ -3,6 +3,7 @@ angular.module("sshop").controller("cartCtrl", function($scope, sshopAPI, produc
     $scope.user = {
         name: ""
     }
+    $scope.table_ready = false;
     $scope.products = products.data.sort((a, b) => a.id - b.id).map(product => {product.quantity = 1; return product});
     $scope.paginator = paginator.create([], 8);
     $scope.getCart = function() {
@@ -16,6 +17,7 @@ angular.module("sshop").controller("cartCtrl", function($scope, sshopAPI, produc
             $scope.products_in_cart.push(product[0]);
         });
         $scope.paginator.updateItems($scope.products_in_cart);
+        $scope.table_ready = true;
     }
 
     $scope.removeFromCart = function(product, index) {

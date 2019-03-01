@@ -22,6 +22,18 @@ $column-padding: 5px;
     flex-direction: row;
 }
 
+.flex-row-header {
+    background: #dbdbdb;
+}
+
+.flex-row-striped:nth-child(even) {
+    background: #ececec;
+}
+
+.flex-row-striped:hover {
+    background: rgb(190, 190, 190);
+}
+
 .flex-row-paginator {
     display: flex;
     align-items: center;
@@ -43,12 +55,6 @@ $column-padding: 5px;
 .flex-column input {
     width: 100%;
 }
-
-.flex-column:nth-child(1) { width: $column1-width; }
-.flex-column:nth-child(2) { width: $column2-width; }
-.flex-column:nth-child(3) { width: $column3-width; }
-.flex-column:nth-child(4) { width: $column4-width; }
-.flex-column:nth-child(5) { width: $column5-width; }
 
 md-input-container {
     margin: 3px 0px;
@@ -78,3 +84,24 @@ md-card-title-text {
     flex-direction: row !important;
     align-items: center !important;
 }
+
+.flex-column-1 { width: 1%; } .flex-column-2 { width: 2%; } .flex-column-3 { width: 3%; } .flex-column-4 { width: 4%; } .flex-column-5 { width: 5%; }
+.flex-column-6 { width: 6%; } .flex-column-7 { width: 7%; } .flex-column-8 { width: 8%; } .flex-column-9 { width: 9%; } .flex-column-10 { width: 10%; }
+.flex-column-11 { width: 11%; } .flex-column-12 { width: 12%; } .flex-column-13 { width: 13%; } .flex-column-14 { width: 14%; } .flex-column-15 { width: 15%; }
+.flex-column-16 { width: 16%; } .flex-column-17 { width: 17%; } .flex-column-18 { width: 18%; } .flex-column-19 { width: 19%; } .flex-column-20 { width: 20%; }
+.flex-column-21 { width: 21%; } .flex-column-22 { width: 22%; } .flex-column-23 { width: 23%; } .flex-column-24 { width: 24%; } .flex-column-25 { width: 25%; }
+.flex-column-26 { width: 26%; } .flex-column-27 { width: 27%; } .flex-column-28 { width: 28%; } .flex-column-29 { width: 29%; } .flex-column-30 { width: 30%; }
+.flex-column-31 { width: 31%; } .flex-column-32 { width: 32%; } .flex-column-33 { width: 33%; } .flex-column-34 { width: 34%; } .flex-column-35 { width: 35%; }
+.flex-column-36 { width: 36%; } .flex-column-37 { width: 37%; } .flex-column-38 { width: 38%; } .flex-column-39 { width: 39%; } .flex-column-40 { width: 40%; }
+.flex-column-41 { width: 41%; } .flex-column-42 { width: 42%; } .flex-column-43 { width: 43%; } .flex-column-44 { width: 44%; } .flex-column-45 { width: 45%; }
+.flex-column-46 { width: 46%; } .flex-column-47 { width: 47%; } .flex-column-48 { width: 48%; } .flex-column-49 { width: 49%; } .flex-column-50 { width: 50%; }
+.flex-column-51 { width: 51%; } .flex-column-52 { width: 52%; } .flex-column-53 { width: 53%; } .flex-column-54 { width: 54%; } .flex-column-55 { width: 55%; }
+.flex-column-56 { width: 56%; } .flex-column-57 { width: 57%; } .flex-column-58 { width: 58%; } .flex-column-59 { width: 59%; } .flex-column-60 { width: 60%; }
+.flex-column-61 { width: 61%; } .flex-column-62 { width: 62%; } .flex-column-63 { width: 63%; } .flex-column-64 { width: 64%; } .flex-column-65 { width: 65%; }
+.flex-column-66 { width: 66%; } .flex-column-67 { width: 67%; } .flex-column-68 { width: 68%; } .flex-column-69 { width: 69%; } .flex-column-70 { width: 70%; }
+.flex-column-71 { width: 71%; } .flex-column-72 { width: 72%; } .flex-column-73 { width: 73%; } .flex-column-74 { width: 74%; } .flex-column-75 { width: 75%; }
+.flex-column-76 { width: 76%; } .flex-column-77 { width: 77%; } .flex-column-78 { width: 78%; } .flex-column-79 { width: 79%; } .flex-column-80 { width: 80%; }
+.flex-column-81 { width: 81%; } .flex-column-82 { width: 82%; } .flex-column-83 { width: 83%; } .flex-column-84 { width: 84%; } .flex-column-85 { width: 85%; }
+.flex-column-86 { width: 86%; } .flex-column-87 { width: 87%; } .flex-column-88 { width: 88%; } .flex-column-89 { width: 89%; } .flex-column-90 { width: 90%; }
+.flex-column-91 { width: 91%; } .flex-column-92 { width: 92%; } .flex-column-93 { width: 93%; } .flex-column-94 { width: 94%; } .flex-column-95 { width: 95%; }
+.flex-column-96 { width: 96%; } .flex-column-97 { width: 97%; } .flex-column-98 { width: 98%; } .flex-column-99 { width: 99%; } .flex-column-100 { width: 100%; }

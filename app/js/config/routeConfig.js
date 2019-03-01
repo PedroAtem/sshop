@@ -20,12 +20,7 @@ angular.module("sshop").config(function ($routeProvider) {
     })
     .when("/admin/products", {
         templateUrl: "app/partials/admin/adminProducts.html",
-        controller: "adminProductsCtrl",
-        resolve: {
-            products: function (sshopAPI) {
-                return sshopAPI.getProducts();
-            }
-        }
+        controller: "adminProductsCtrl"
     })
     .when("/admin/orders", {
         templateUrl: "app/partials/admin/adminOrders.html",

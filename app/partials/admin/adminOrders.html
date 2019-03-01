@@ -3,27 +3,27 @@
         <md-card-title-text>
             <span class="md-headline">Admin > Compras</span>
             <div class="header-space"></div>
-            <md-input-container class="div-search-input">
+            <md-input-container ng-show="table_ready" class="div-search-input">
                 <label>Pesquisar</label>
                 <input ng-model="paginator.search" ng-keyup="paginator.update()">
             </md-input-container>
         </md-card-title-text>
     </md-card-title>
-    <div class="flex-table-container">
+    <div class="flex-table-container" ng-show="table_ready">
         <div class="flex-table">
-            <div class="flex-row">
-                <div class="flex-column flex-column-header">Nome</div>
-                <div class="flex-column flex-column-header">Qtd.</div>
-                <div class="flex-column flex-column-header">Total</div>
+            <div class="flex-row flex-row-header">
+                <div class="flex-column flex-column-40 flex-column-header">Nome</div>
+                <div class="flex-column flex-column-30 flex-column-header">Qtd.</div>
+                <div class="flex-column flex-column-30 flex-column-header">Total</div>
             </div>
-            <div class="flex-row" ng-repeat="product in paginator.filtered_items">
-                <div class="flex-column">{{ product.name }}</div>
-                <div class="flex-column">{{ product.total_quantity }}</div>
-                <div class="flex-column">{{ product.total_price | currency:"R$ " }}</div>
+            <div class="flex-row flex-row-striped" ng-repeat="product in paginator.filtered_items">
+                <div class="flex-column flex-column-40">{{ product.name }}</div>
+                <div class="flex-column flex-column-30">{{ product.total_quantity }}</div>
+                <div class="flex-column flex-column-30">{{ product.total_price | currency:"R$ " }}</div>
             </div>
         </div>
     </div>
-    <div class="flex-row-paginator">
+    <div class="flex-row-paginator" ng-show="table_ready">
         <md-button class="md-icon-button md-primary" aria-label="paginator-previous" ng-click="paginator.previous()">
             <i class="fas fa-arrow-left"></i>
         </md-button>
@@ -34,5 +34,11 @@
         <md-button class="md-icon-button md-primary" aria-label="paginator-next" ng-click="paginator.next()">
             <i class="fas fa-arrow-right"></i>
         </md-button>
+    </div>
+    <div ng-show="!table_ready">
+        <md-progress-linear md-mode="query" ng-disabled="table_ready"></md-progress-linear>
+        <div class="loading-text">
+            <span>Buscando informações das compras</span>
+        </div>
     </div>
 </md-card>

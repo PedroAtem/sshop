@@ -3,31 +3,31 @@
         <md-card-title-text>
             <span class="md-headline">Home</span>
             <div class="header-space"></div>
-            <md-input-container class="div-search-input">
+            <md-input-container class="div-search-input" ng-show="table_ready">
                 <label>Pesquisar</label>
                 <input ng-model="paginator.search" ng-keyup="paginator.update()">
             </md-input-container>
         </md-card-title-text>
     </md-card-title>
-    <div class="flex-table-container">
+    <div class="flex-table-container" ng-show="table_ready">
         <div class="flex-table">
-            <div class="flex-row">
-                <div class="flex-column flex-column-header">Produto</div>
-                <div class="flex-column flex-column-header">Descrição</div>
-                <div class="flex-column flex-column-header">Preço</div>
-                <div class="flex-column flex-column-header">Qtd.</div>
-                <div class="flex-column flex-column-header">Ações</div>
+            <div class="flex-row flex-row-header">
+                <div class="flex-column flex-column-20 flex-column-header">Produto</div>
+                <div class="flex-column flex-column-40 flex-column-header">Descrição</div>
+                <div class="flex-column flex-column-10 flex-column-header">Preço</div>
+                <div class="flex-column flex-column-10 flex-column-header">Qtd.</div>
+                <div class="flex-column flex-column-20 flex-column-header">Ações</div>
             </div>
-            <div class="flex-row" ng-repeat="product in paginator.filtered_items">
-                <div class="flex-column">{{ product.name }}</div>
-                <div class="flex-column">{{ product.description }}</div>
-                <div class="flex-column">{{ product.price | currency:"R$ " }}</div>
-                <div class="flex-column">
+            <div class="flex-row flex-row-striped" ng-repeat="product in paginator.filtered_items">
+                <div class="flex-column flex-column-20">{{ product.name }}</div>
+                <div class="flex-column flex-column-40">{{ product.description }}</div>
+                <div class="flex-column flex-column-10">{{ product.price | currency:"R$ " }}</div>
+                <div class="flex-column flex-column-10">
                     <md-input-container class="md-block">
                         <input required type="number" step="1" name="quantity" ng-model="products[$index].quantity" min="1" aria-label="quantity" />
                     </md-input-container>
                 </div>
-                <div class="flex-column">
+                <div class="flex-column flex-column-20">
                     <md-button ng-click="addToCart(products[$index])" class="md-fab md-primary" aria-label="button-add">
                         <i class="fas fa-cart-plus"></i>
                     </md-button>
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div class="flex-row-paginator">
+    <div class="flex-row-paginator" ng-show="table_ready">
         <md-button class="md-icon-button md-primary" aria-label="paginator-previous" ng-click="paginator.previous()">
             <i class="fas fa-arrow-left"></i>
         </md-button>
@@ -46,5 +46,11 @@
         <md-button class="md-icon-button md-primary" aria-label="paginator-next" ng-click="paginator.next()">
             <i class="fas fa-arrow-right"></i>
         </md-button>
+    </div>
+    <div ng-show="!table_ready">
+        <md-progress-linear md-mode="query" ng-disabled="table_ready"></md-progress-linear>
+        <div class="loading-text">
+            <span>Buscando produtos</span>
+        </div>
     </div>
 </md-card>

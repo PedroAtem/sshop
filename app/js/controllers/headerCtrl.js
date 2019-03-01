@@ -8,6 +8,11 @@ angular.module("sshop").controller("headerCtrl", function ($scope, $rootScope, $
         return $mdSidenav('sshop-sidenav').isOpen() || false;
     }
 
+    $scope.openMenu = function($mdMenu, ev) {
+        originatorEv = ev;
+        $mdMenu.open(ev);
+    };
+
     $scope.title = 'S-SHOP';
 
 });

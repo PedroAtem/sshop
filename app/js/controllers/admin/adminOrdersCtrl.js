@@ -1,6 +1,7 @@
 angular.module("sshop").controller("adminOrdersCtrl", function($scope, $q, sshopAPI, products, orders, paginator, $mdToast) {
 
-    $scope.orders = orders.data.sort((a, b) => a.id - b.id)
+    $scope.orders = orders.data.sort((a, b) => a.id - b.id);
+    $scope.table_ready = false;
     $scope.processOrders = function() {
         $scope.getUsers();
     }
@@ -77,6 +78,7 @@ angular.module("sshop").controller("adminOrdersCtrl", function($scope, $q, sshop
     $scope.initPaginator = function() {
         $scope.paginator = paginator.create($scope.orders, 20);
         $scope.paginator.init();
+        $scope.table_ready = true;
     }
 
     $scope.processOrders();

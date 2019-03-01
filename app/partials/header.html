@@ -7,9 +7,25 @@
                     <i ng-if="sidenavIsOpen()" class="fas fa-times"></i>
                 </md-button>
                 <h2 flex md-truncate>{{ title }}</h2>
-                <md-button class="md-icon-button button-cart" href="#!/cart" aria-label="Favorite">
-                    <i class="fas fa-shopping-cart"></i>
-                </md-button>
+
+
+                <md-menu>
+                    <md-button aria-label="Open phone interactions menu" class="md-icon-button button-cart" ng-click="openMenu($mdMenu, $event)">
+                        <i class="fas fa-cog"></i>
+                    </md-button>
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button href="#!/admin/orders">
+                                Admin - Lista de compras
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button href="#!/admin/products">
+                                Admin - Lista de produtos
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </div>
         </md-toolbar>
     </md-content>
